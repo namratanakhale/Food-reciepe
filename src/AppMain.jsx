@@ -83,6 +83,24 @@ function App() {
     updateTimeoutId(timeout);
   };
 
+  const [data, setData] = useState({});
+
+  const handleChange = event => {
+    setData({ ...data, [event.target.name]: event.target.value });
+  };
+
+  const handleSave = () => {
+    // Save data to storage or API
+    // ...
+  
+    // Example: Save data to local storage
+    localStorage.setItem('data', JSON.stringify(data));
+  
+    // Show a message to confirm that data has been saved
+    alert('Data saved!');
+  };
+  
+  
 
   const RecipeComponent = (props) => {
 
@@ -125,7 +143,7 @@ function App() {
 
        
    
-       <SaveAltTwoToneIcon />
+       <SaveAltTwoToneIcon onClick={handleSave}/>
       
 
         <IngredientsText onClick={() => setShow(!show)}>
